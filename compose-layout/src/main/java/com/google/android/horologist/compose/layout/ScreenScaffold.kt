@@ -40,6 +40,7 @@ import androidx.wear.compose.material.Scaffold
  *
  * @param modifier the Scaffold modifier.
  * @param timeText the page specific time text.
+ * @param vignette a full screen slot for applying a vignette over the contents of the scaffold. The vignette is used to blur the screen edges when the main content is scrollable content that extends beyond the screen edge.
  * @param scrollState the ScrollableState to show in a default PositionIndicator.
  * @param positionIndicator set a non default PositionIndicator or disable with an no-op lambda.
  * @param content the content block.
@@ -48,6 +49,7 @@ import androidx.wear.compose.material.Scaffold
 fun ScreenScaffold(
     modifier: Modifier = Modifier,
     timeText: (@Composable () -> Unit)? = null,
+    vignette: @Composable (() -> Unit)? = null,
     scrollState: ScrollableState? = null,
     positionIndicator: (@Composable () -> Unit)? = null,
     content: @Composable BoxScope.() -> Unit,
@@ -73,6 +75,7 @@ fun ScreenScaffold(
     Scaffold(
         modifier = modifier,
         timeText = timeText,
+        vignette = vignette,
         positionIndicator = {
             if (positionIndicator != null) {
                 positionIndicator()
